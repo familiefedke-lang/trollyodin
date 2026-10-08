@@ -238,9 +238,9 @@ main :: proc() {
 draw_gui :: proc(s: ^State) {
 	rl.DrawRectangle(0, 0, PANEL_W, SCREEN_H, {245, 245, 245, 255})
 	rl.GuiLabel({10, 10, 240, 20}, "Form")
-	if rl.GuiButton({10, 32, 75, 28}, "Sphere") != 0 { s.shape = .Sphere }
-	if rl.GuiButton({92, 32, 75, 28}, "Cube") != 0 { s.shape = .Cube }
-	if rl.GuiButton({174, 32, 75, 28}, "Triangle") != 0 { s.shape = .Triangle }
+	if rl.GuiButton({10, 32, 75, 28}, "Sphere") { s.shape = .Sphere }
+	if rl.GuiButton({92, 32, 75, 28}, "Cube") { s.shape = .Cube }
+	if rl.GuiButton({174, 32, 75, 28}, "Triangle") { s.shape = .Triangle }
 
 	rl.GuiLabel({10, 75, 240, 20}, "Camera")
 	rl.GuiSliderBar({70, 98, 140, 20}, "FOV", rl.TextFormat("%.0f", s.fov), &s.fov, 10, 120)
@@ -264,7 +264,7 @@ draw_gui :: proc(s: ^State) {
 	rl.GuiSliderBar({70, 424, 140, 20}, "Y", rl.TextFormat("%.0f", s.obj_rot.y), &s.obj_rot.y, -180, 180)
 	rl.GuiSliderBar({70, 450, 140, 20}, "Z", rl.TextFormat("%.0f", s.obj_rot.z), &s.obj_rot.z, -180, 180)
 
-	if rl.GuiButton({10, 490, 240, 28}, "Reset (R)") != 0 {
+	if rl.GuiButton({10, 490, 240, 28}, "Reset (R)") {
 		s^ = default_state()
 	}
 	rl.GuiLabel({10, 540, 240, 60}, "LMB drag: orbit\nRMB drag: rotate form\nWheel: dolly")
